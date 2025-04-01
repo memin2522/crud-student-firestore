@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit card</title>
+</head>
+<body>
+    
+    <section>
+        <h1>Detalles del pago</h1>
+        <button id="loadDataBtn">Show all documents in console</button> <br><br>
+    </section>
+    
+    <section>
+        
+        
+        <label for="NameUser">Name user: </label>
+        <input type="text" id="NameUser" placeholder="Ej: Sebastian ronaldo"><br><br>
+        
+        <label for="NumberCard">Number card:</label>
+        <input type="text" id="NumberCard" placeholder="Ej: 3456 7523 9735 1267"><br><br>
+        
+        <label for="ExpiryDate">Expiry Date:</label>
+        <input type="date" id="ExpiryDate" placeholder="Ej: 2024-02-15"><br><br>
+
+        <label for="CVV">CVV:</label>
+        <input type="text" id="CVV" placeholder="Ej: 3456"><br><br>
+
+
+        <button id="addDocBtn">Add Credit Card</button>
+    </section>
+
+    <div>
+        <h2>Get CVV</h2>
+
+        <label for="getDocId">CVV:</label>
+        <input type="text" id="getDocId" placeholder="Ej: 30003625"><br><br>
+
+        <button id="getDocBtn">Get CVV</button>
+    </div>
+    
+   <script type="module" src="/showData.js"></script>
+
+</body>
+</html>
