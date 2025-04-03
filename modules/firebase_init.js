@@ -11,8 +11,9 @@ const firebaseConfig = {
   projectId: "db-multimedia",
   storageBucket: "db-multimedia.firebasestorage.app",
   messagingSenderId: "703694156223",
-  appId: "1:703694156223:web:ecba5df473d07cf21db10a"
+  appId: "1:703694156223:web:cd702f775e4417841db10a"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

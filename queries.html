@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Firebase Web</title>
+</head>
+
+<body>
+    <div>
+        <h1>Where query</h1>
+        <label for="column">Column for comparison</label>
+        <input type="text" id="column" placeholder="name"><br><br>
+
+        <label for="comparator">Comparator :</label>
+        <input type="text" id="comparator" placeholder="(<,<=,==, >, >=, !=)"><br><br>
+
+        <label for="value">Value:</label>
+        <input type="text" id="value" placeholder="555"><br><br>
+
+        <button id="makeQueryBtn">Make a game query</button>
+    </div>
+
+    <script type="module">
+        import { FirestoreQuery } from './modules/firestore_query.js';
+
+        const firestore = new FirestoreQuery("2025-I");
+
+        document.getElementById("makeQueryBtn").addEventListener("click", async () => {
+            const column = document.getElementById("column").value.trim();
+            const comparator = document.getElementById("comparator").value.trim();
+            console.log("Where clause params:", column, comparison, value);
+            const value = document.getElementById("value").value.trim();
+
+            const docs = await firestore.whereQuery(column, comparator, value);
+            console.log("Obtained Docs:", docs);
+        });
+    </script>
+</body>
+
+</html>
