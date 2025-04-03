@@ -42,6 +42,7 @@ document.getElementById("getDocBtn").addEventListener("click", async () => {
 
 document.getElementById("reflectData").addEventListener("click", async () => {
     const container = document.getElementById("container_data");
+    const docId = document.getElementById("getDocId").value.trim();
     
     try {
         // Aquí asumo que `docId` ya está definido en otro lugar
