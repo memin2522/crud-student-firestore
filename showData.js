@@ -29,16 +29,6 @@ document.getElementById("addDocBtn").addEventListener("click", async () => {
 });
 
 
-document.getElementById("getDocBtn").addEventListener("click", async () => {
-    const docId = document.getElementById("getDocId").value.trim();
-
-    if (!docId) {
-        alert("The student id is needed");
-        return;
-    }
-    const doc = await firestore.getDocumentById(docId);
-    console.log(doc);
-});
 
 document.getElementById("reflectData").addEventListener("click", async () => {
     const container = document.getElementById("container_data");
@@ -51,11 +41,12 @@ document.getElementById("reflectData").addEventListener("click", async () => {
         // Asegurarse de que el contenedor esté visible
         container.style.display = "block";
         
+        console.log(doc)
         // Llenar el contenedor con la información del documento
         container.innerHTML = `
-            <h6> ${doc.ExpiryDate} </h6>
-            <h6> ${doc.NameUser} </h6>
-            <h6> ${doc.NumberCard} </h6>
+            <h4> ${doc.ExpiryDate} </h4>
+            <h4> ${doc.NameUser} </h4>
+            <h4> ${doc.NumberCard} </h4>
         `;
     } catch (error) {
         console.error("Error al obtener el documento:", error);
