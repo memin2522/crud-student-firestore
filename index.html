@@ -1,94 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Firebase Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Credit card</title>
 </head>
-
 <body>
-    <div>
-        <h1>Connected to Firestore</h1>
-        <button id="loadDataBtn">Show all documents in console</button>
-    </div>
+    
+    <section>
+        <h1>Detalles del pago</h1>
+        <button id="loadDataBtn">Show all documents in console</button> <br><br>
+    </section>
+    
+    <section>
+        
+        
+        <label for="NameUser">Name user: </label>
+        <input type="text" id="NameUser" placeholder="Ej: Sebastian ronaldo"><br><br>
+        
+        <label for="NumberCard">Number card:</label>
+        <input type="text" id="NumberCard" placeholder="Ej: 3456 7523 9735 1267"><br><br>
+        
+        <label for="ExpiryDate">Expiry Date:</label>
+        <input type="date" id="ExpiryDate" placeholder="Ej: 2024-02-15"><br><br>
+
+        <label for="CVV">CVV:</label>
+        <input type="text" id="CVV" placeholder="Ej: 3456"><br><br>
+
+
+        <button id="addDocBtn">Add Credit Card</button>
+    </section>
 
     <div>
-        <h1>Add student to the database</h1>
+        <h2>Get CVV</h2>
 
-        <label for="docId">Student Code:</label>
-        <input type="text" id="docId" placeholder="Ej: 30003625"><br><br>
-
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" placeholder="Ej: Sergio"><br><br>
-
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" placeholder="Ej: Reyes"><br><br>
-
-        <label for="nickname">Nickname:</label>
-        <input type="text" id="nickname" placeholder="Ej: Profe"><br><br>
-
-        <label for="age">Age:</label>
-        <input type="number" id="age" placeholder="Ej: 18"><br><br>
-
-        <button id="addDocBtn">Add Student</button>
-    </div>
-    <div>
-        <h1>Get student by id</h1>
-
-        <label for="getDocId">Student Code:</label>
+        <label for="getDocId">CVV:</label>
         <input type="text" id="getDocId" placeholder="Ej: 30003625"><br><br>
 
-        <button id="getDocBtn">Get Student</button>
+        <button id="getDocBtn">Get CVV</button>
     </div>
 
-    <a href="./CrefitCard.html" target="_parent" rel="noopener noreferrer">Visit Link</a>
+    <button id="reflectData">Show Data</button>
 
-    <script type="module">
-        import { FirestoreService } from './modules/firestore_service.js';
+    <div id="container_data" style="display: none;">
 
-        const firestore = new FirestoreService("2025-I");
+    </div>
+    
+   <script type="module" src="/showData.js"></script>
 
-        document.getElementById("loadDataBtn").addEventListener("click", async () => {
-            const docs = await firestore.getAllDocuments();
-            console.log("Obtained Docs:", docs);
-        });
-
-        document.getElementById("addDocBtn").addEventListener("click", async () => {
-            const docId = document.getElementById("docId").value.trim();
-            const firstName = document.getElementById("firstName").value.trim();
-            const lastName = document.getElementById("lastName").value.trim();
-            const nickname = document.getElementById("nickname").value.trim();
-            const ageValue = document.getElementById("age").value;
-            const age = ageValue ? parseInt(ageValue) : null;
-
-            if (!docId || !firstName || !lastName) {
-                alert("Fill in the required fields: Document ID, First Name and Last Name.");
-                return;
-            }
-
-            const data = {
-                firstName,
-                lastName,
-                nickname,                    
-                age: isNaN(age) ? null : age 
-            };
-
-            await firestore.PostDocument(docId, data);
-        });
-
-        document.getElementById("getDocBtn").addEventListener("click", async () => {
-            const docId = document.getElementById("getDocId").value.trim();
-
-            if (!docId) {
-                alert("The student id is needed");
-                return;
-            }
-            const doc = await firestore.getDocumentById(docId);
-            console.log(doc);
-        });
-    </script>
 </body>
-
 </html>

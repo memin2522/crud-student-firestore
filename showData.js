@@ -39,3 +39,27 @@ document.getElementById("getDocBtn").addEventListener("click", async () => {
     const doc = await firestore.getDocumentById(docId);
     console.log(doc);
 });
+
+document.getElementById("reflectData").addEventListener("click", async () => {
+    const container = document.getElementById("container_data");
+    
+    try {
+        // Aquí asumo que `docId` ya está definido en otro lugar
+        const doc = await firestore.getDocumentById(docId);
+
+        // Asegurarse de que el contenedor esté visible
+        container.style.display = "block";
+        
+        // Llenar el contenedor con la información del documento
+        container.innerHTML = `
+            <h6> ${doc.ExpiryDate} </h6>
+            <h6> ${doc.NameUser} </h6>
+            <h6> ${doc.NumberCard} </h6>
+        `;
+    } catch (error) {
+        console.error("Error al obtener el documento:", error);
+        container.innerHTML = "<p>No se pudo obtener el documento.</p>";
+        container.style.display = "block";
+    }
+});
+
