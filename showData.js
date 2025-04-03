@@ -9,23 +9,23 @@ document.getElementById("loadDataBtn").addEventListener("click", async () => {
 });
 
 document.getElementById("addDocBtn").addEventListener("click", async () => {
-    const NameUser = document.getElementById("NameUser").value.trim();
-    const NumberCard = document.getElementById("NumberCard").value.trim();
-    const ExpiryDate = document.getElementById("ExpiryDate").value.trim();
-    const CVV = document.getElementById("CVV").value.trim();
+    const nameUser = document.getElementById("nameUser").value.trim();
+    const numberCard = document.getElementById("numberCard").value.trim();
+    const expiryDate = document.getElementById("expiryDate").value.trim();
+    const cVV = document.getElementById("cVV").value.trim();
 
-    if (!NameUser || !NumberCard || !ExpiryDate || !CVV) {
-        alert("Fill in the required fields: Name, Number Card, Expiry Date and CVV.");
+    if (!nameUser || !numberCard || !expiryDate || !cVV) {
+        alert("Fill in the required fields: Name, Number Card, Expiry Date and cVV.");
         return;
     }
 
     const data = {
-        NameUser,
-        NumberCard,
-        ExpiryDate,
+        nameUser,
+        numberCard,
+        expiryDate,
     };
 
-    await firestore.PostDocument(CVV, data);
+    await firestore.PostDocument(cVV, data);
 });
 
 /// change
@@ -44,9 +44,9 @@ document.getElementById("reflectData").addEventListener("click", async () => {
         console.log(doc)
         // Llenar el contenedor con la información del documento
         container.innerHTML = `
-            <h4> ${doc.ExpiryDate} </h4>
-            <h4> ${doc.NameUser} </h4>
-            <h4> ${doc.NumberCard} </h4>
+            <h4> ${doc.expiryDate} </h4>
+            <h4> ${doc.nameUser} </h4>
+            <h4> ${doc.numberCard} </h4>
         `;
     } catch (error) {
         console.error("Error al obtener el documento:", error);
