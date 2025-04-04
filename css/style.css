@@ -16,7 +16,7 @@
     justify-content: center;
     gap: 8px;
     align-items: center;
-    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.345);
     padding: 16px 20px;
     border-radius: 8px;
     width: 600px;
@@ -48,7 +48,7 @@ h1{
     border-radius: 8px;
     padding: 4px 6px;
     background-color: #d8f0e6;
-    box-shadow:  2px 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow:  4px 4px 8px rgba(0, 0, 0, 0.342);
     color: #3a7b5e;
     font-size: 16px;
 }
