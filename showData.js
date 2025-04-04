@@ -44,14 +44,15 @@ document.getElementById("reflectData").addEventListener("click", async () => {
         console.log(doc)
         // Llenar el contenedor con la información del documento
         container.innerHTML = `
-            <h4> ${doc.expiryDate} </h4>
-            <h4> ${doc.nameUser} </h4>
-            <h4> ${doc.numberCard} </h4>
+            <h4> Expiry Date: ${doc.ExpiryDate} </h4>
+            <h4> User card: ${doc.UserCard} </h4>
+            <h4> Number Card: ${doc.NumberCard} </h4>
         `;
     } catch (error) {
         console.error("Error al obtener el documento:", error);
-        container.innerHTML = "<p>No se pudo obtener el documento.</p>";
+        container.innerHTML = "<h4>No se pudo obtener el documento.</h4>";
         container.style.display = "block";
+        
     }
 });
 

@@ -1,0 +1,80 @@
+.buttonPrincipal {
+    width: fit-content;
+    padding: 12px 8px;
+    border: 2px solid #012522;
+    border-radius: 4px;
+    background-color: #438c72;
+    color: #d8f0e6;
+    font-size: 16px;
+}
+
+
+.container_Info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 16px 20px;
+    border-radius: 8px;
+    width: 600px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+    background-color: #d8f0e6;
+    height: 100vh;
+}
+
+h1{
+    font-size: 56px;
+    color: #012522;
+}
+.TextInput{
+    font-size: 20px;
+    color: #012522;
+}
+
+.ContainerInput{
+
+    height: 4vh;
+    width: 10rem;
+    border-radius: 8px;
+    padding: 4px 6px;
+    background-color: #d8f0e6;
+    box-shadow:  2px 2px 8px rgba(0, 0, 0, 0.2);
+    color: #3a7b5e;
+    font-size: 16px;
+}
+
+.ContainerInput::placeholder{
+
+    color: #3a7b5e;
+}
+
+input[type="date"] {
+    color: #3a7b5e; /* tu color personalizado */
+  }
+
+.buttonPrincipal:hover {
+    background-color: #3a7b5e;
+    cursor: pointer;
+}
+
+.container_data{
+    display: flex;
+    width: 600px;
+    flex-direction: column;
+
+}
+h4{
+    font-size: 24px;
+    color: #012522;
+    text-align: center;
+}

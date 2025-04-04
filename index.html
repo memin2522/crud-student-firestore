@@ -1,51 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Credit card</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Credit card</title>
+       <link rel="stylesheet" href="/css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    </head>
 <body>
     
-    <section>
-        <h1>Detalles del pago</h1>
-        <button id="loadDataBtn">Show all documents in console</button> <br><br>
+    <section class="container_Info">
+        <h1 >Detalles del pago</h1>
+        <button id="loadDataBtn" class="buttonPrincipal">Show all documents in console</button> <br><br>
     </section>
     
-    <section>
+    <section class="container_Info">
         
+        <label for="NameUser" class="TextInput">Name user: </label>
+        <input type="text" id="NameUser" class="ContainerInput" placeholder="Ej: Sebastian ronaldo"><br><br>
         
-        <label for="NameUser">Name user: </label>
-        <input type="text" id="NameUser" placeholder="Ej: Sebastian ronaldo"><br><br>
+        <label for="NumberCard" class="TextInput">Number card:</label>
+        <input type="text" id="NumberCard" class="ContainerInput" placeholder="Ej: 3456 7523 9735 1267"><br><br>
         
-        <label for="NumberCard">Number card:</label>
-        <input type="text" id="NumberCard" placeholder="Ej: 3456 7523 9735 1267"><br><br>
-        
-        <label for="ExpiryDate">Expiry Date:</label>
-        <input type="date" id="ExpiryDate" placeholder="Ej: 2024-02-15"><br><br>
+        <label for="ExpiryDate" class="TextInput">Expiry Date:</label>
+        <input type="date" id="ExpiryDate" class="ContainerInput" ><br><br>
 
-        <label for="CVV">CVV:</label>
-        <input type="text" id="CVV" placeholder="Ej: 3456"><br><br>
+        <label for="CVV" class="TextInput">CVV:</label>
+        <input type="text" id="CVV" class="ContainerInput" placeholder="Ej: 3456"><br><br>
 
-
-        <button id="addDocBtn">Add Credit Card</button>
+        <button id="addDocBtn" class="buttonPrincipal">Add Credit Card</button>
     </section>
 
-    <div>
-        <h2>Get CVV</h2>
+    <div class="container_Info">
 
-        <label for="getDocId">CVV:</label>
-        <input type="text" id="getDocId" placeholder="Ej: 30003625"><br><br>
+        <label for="getDocId" class="TextInput">CVV:</label>
+        <input type="text" id="getDocId" class="ContainerInput" placeholder="Ej: 30003625"><br><br>
 
-        <button id="reflectData">Show Data</button>
+        <button id="reflectData" class="buttonPrincipal">Show Data</button>
 
-        <div id="container_data" style="display: none;">
+        <div id="container_data" class="container_data">
     
         </div>
     </div>
 
-
-    
    <script type="module" src="./showData.js"></script>
 
 </body>
