@@ -7,18 +7,59 @@
 </head>
 
 <body>
+    <h1>Firestore Query Tester</h1>
+
     <div>
-        <h1>Where query</h1>
-        <label for="column">Column for comparison</label>
+        <h2>Where Query</h2>
+        <label for="column">Column:</label>
         <input type="text" id="column" placeholder="name"><br><br>
 
-        <label for="comparator">Comparator :</label>
-        <input type="text" id="comparator" placeholder="(<,<=,==, >, >=, !=)"><br><br>
+        <label for="comparator">Comparator:</label>
+        <input type="text" id="comparator" placeholder="==, >, <, etc"><br><br>
 
         <label for="value">Value:</label>
-        <input type="text" id="value" placeholder="555"><br><br>
+        <input type="text" id="value" placeholder="e.g. John or 25"><br><br>
 
-        <button id="makeQueryBtn">Make a game query</button>
+        <button id="whereQueryBtn">Run Where Query</button>
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>Order + Limit</h2>
+        <label for="orderColumn">Order by:</label>
+        <input type="text" id="orderColumn" placeholder="price"><br><br>
+
+        <label for="orderDir">Direction:</label>
+        <select id="orderDir">
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+        </select><br><br>
+
+        <label for="limitNum">Limit:</label>
+        <input type="number" id="limitNum" value="5"><br><br>
+
+        <button id="orderLimitQueryBtn">Run Order + Limit Query</button>
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>Prefix Search</h2>
+        <label for="prefixColumn">Column:</label>
+        <input type="text" id="prefixColumn" placeholder="name"><br><br>
+
+        <label for="prefixValue">Starts with:</label>
+        <input type="text" id="prefixValue" placeholder="Sam"><br><br>
+
+        <button id="prefixQueryBtn">Run Prefix Search</button>
+    </div>
+
+    <hr>
+
+    <div>
+        <h2>Results</h2>
+        <pre id="results"></pre>
     </div>
 
     <script type="module">
@@ -26,14 +67,46 @@
 
         const firestore = new FirestoreQuery("2025-I");
 
-        document.getElementById("makeQueryBtn").addEventListener("click", async () => {
+        const displayResults = (docs) => {
+            const resultsEl = document.getElementById("results");
+            if (!docs || docs.length === 0) {
+                resultsEl.textContent = "No documents found.";
+                return;
+            }
+
+            resultsEl.textContent = JSON.stringify(docs, null, 2);
+        };
+
+        // Where Query
+        document.getElementById("whereQueryBtn").addEventListener("click", async () => {
             const column = document.getElementById("column").value.trim();
             const comparator = document.getElementById("comparator").value.trim();
-            console.log("Where clause params:", column, comparison, value);
-            const value = document.getElementById("value").value.trim();
+            const valueRaw = document.getElementById("value").value.trim();
+
+            // Convert to number if it's numeric
+            const value = isNaN(valueRaw) ? valueRaw : Number(valueRaw);
 
             const docs = await firestore.whereQuery(column, comparator, value);
-            console.log("Obtained Docs:", docs);
+            displayResults(docs);
+        });
+
+        // Order + Limit Query
+        document.getElementById("orderLimitQueryBtn").addEventListener("click", async () => {
+            const column = document.getElementById("orderColumn").value.trim();
+            const direction = document.getElementById("orderDir").value;
+            const limitNum = parseInt(document.getElementById("limitNum").value, 10);
+
+            const docs = await firestore.combinedQuery([], { column, direction }, limitNum);
+            displayResults(docs);
+        });
+
+        // Prefix Search
+        document.getElementById("prefixQueryBtn").addEventListener("click", async () => {
+            const column = document.getElementById("prefixColumn").value.trim();
+            const prefix = document.getElementById("prefixValue").value.trim();
+
+            const docs = await firestore.prefixSearch(column, prefix);
+            displayResults(docs);
         });
     </script>
 </body>
