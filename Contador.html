@@ -8,25 +8,40 @@
 </head>
 <body>
 
-    <h1>Ooganizar y Mostrar usuarios</h1>
+    <h1>Organizar y Mostrar usuarios</h1>
 
     <section class="container_Info">
-        <h1 class="TextInput">Organizar CVV</h1>
+        <h1 class="TextInput">Organizar CVV por comparador</h1>
     
-        <label for="NameUser" class="TextInput">Nombre usuario:</label>
+        <label for="NameUser" class="TextInput">Tipo de dato:</label>
         <input type="text" id="NameUser" class="ContainerInput" placeholder="Digita la palabra NameUser"><br><br>
     
         <label for="comparator" class="TextInput">Forma análisis:</label>
         <input type="text" id="comparator" class="ContainerInput" placeholder="==, >, <, etc"><br><br>
     
-        <label for="value" class="TextInput">Número CVV:</label>
-        <input type="text" id="value" class="ContainerInput" placeholder="Ej: 234"><br><br>
+        <label for="value" class="TextInput">Nombre usuario:</label>
+        <input type="text" id="value" class="ContainerInput" placeholder="Ej: Oscar perez"><br><br>
     
         <button id="OrderCVV" class="buttonPrincipal">Ejecutar organizador</button>
     </section>
     
+    <section class="container_Info">
+        <h2 class="TextInput">Nombres ascendentes o descendentes</h2>
+        <label for="orderColumn" class="TextInput">Se organizara por:</label>
+        <input type="text" id="orderColumn" class="ContainerInput" placeholder=" Ej: nameUser"><br><br>
 
 
+        <label for="orderDir" class="TextInput">direccion:</label>
+        <select id="orderDir" class="ContainerInput">
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+        </select><br><br>
+
+        <label for="limitNum" class="TextInput">Limite:</label>
+        <input type="number" id="limitNum" class="ContainerInput" value="5"><br><br>
+
+        <button id="orderLimitQueryBtn" class="buttonPrincipal">Organizar ASC o DES</button>
+    </section>
 
         <h2>Results</h2>
         <div id="container_data" class="container_data">
