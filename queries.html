@@ -10,19 +10,17 @@
     <h1>Firestore Query Tester</h1>
 
     <div>
-        <h2>Where Query</h2>
-        <label for="column">Column:</label>
-        <input type="text" id="column" placeholder="name"><br><br>
-
-        <label for="comparator">Comparator:</label>
-        <input type="text" id="comparator" placeholder="==, >, <, etc"><br><br>
-
-        <label for="value">Value:</label>
-        <input type="text" id="value" placeholder="e.g. John or 25"><br><br>
-
-        <button id="whereQueryBtn">Run Where Query</button>
+        <h2>Where Queries (Multiple)</h2>
+        <div id="filtersContainer">
+            <div class="filter">
+                <input type="text" placeholder="Column" class="filterColumn">
+                <input type="text" placeholder="Comparator (==, >, <, etc)" class="filterComparator">
+                <input type="text" placeholder="Value" class="filterValue">
+            </div>
+        </div>
+        <button id="addFilterBtn">Add Filter</button><br><br>
+        <button id="multiWhereQueryBtn">Run Combined Query</button>
     </div>
-
     <hr>
 
     <div>
@@ -77,16 +75,39 @@
             resultsEl.textContent = JSON.stringify(docs, null, 2);
         };
 
-        // Where Query
-        document.getElementById("whereQueryBtn").addEventListener("click", async () => {
-            const column = document.getElementById("column").value.trim();
-            const comparator = document.getElementById("comparator").value.trim();
-            const valueRaw = document.getElementById("value").value.trim();
+        // Add fields to filter
+        document.getElementById("addFilterBtn").addEventListener("click", () => {
+            console.log("Add field clicked")
+            const container = document.getElementById("filtersContainer");
+            const div = document.createElement("div");
+            div.classList.add("filter");
 
-            // Convert to number if it's numeric
-            const value = isNaN(valueRaw) ? valueRaw : Number(valueRaw);
+            div.innerHTML = `
+                <input type="text" placeholder="Column" class="filterColumn">
+                <input type="text" placeholder="Comparator (==, >, <, etc)" class="filterComparator">
+                <input type="text" placeholder="Value" class="filterValue">
+                `;
 
-            const docs = await firestore.whereQuery(column, comparator, value);
+            container.appendChild(div);
+        });
+
+        // Multi query
+        document.getElementById("multiWhereQueryBtn").addEventListener("click", async () => {
+            const filterDivs = document.querySelectorAll("#filtersContainer .filter");
+            const filters = [];
+
+            filterDivs.forEach(div => {
+                const column = div.querySelector(".filterColumn").value.trim();
+                const comparison = div.querySelector(".filterComparator").value.trim();
+                const valueRaw = div.querySelector(".filterValue").value.trim();
+
+                if (column && comparison) {
+                    const value = isNaN(valueRaw) ? valueRaw : Number(valueRaw);
+                    filters.push({ column, comparison, value });
+                }
+            });
+
+            const docs = await firestore.combinedQuery(filters);
             displayResults(docs);
         });
 
