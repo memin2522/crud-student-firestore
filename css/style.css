@@ -8,6 +8,11 @@
     font-size: 16px;
 }
 
+h4{
+    font-size: 24px;
+    color: #012522;
+    text-align: center;
+}
 
 .container_Info {
     display: flex;
@@ -53,6 +58,23 @@ h1{
     font-size: 16px;
 }
 
+.container_data .card2 {
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.342);
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    margin: 16px;
+
+}
+
+.container_data .card2:hover {
+    transform: scale(1.05);
+    background-color: #3a7b5e;
+}
+
+.container_data .card2:hover h4 {
+    color: #d8f0e6;
+}
+
 .ContainerInput::placeholder{
 
     color: #3a7b5e;
@@ -72,9 +94,4 @@ input[type="date"] {
     width: 600px;
     flex-direction: column;
 
-}
-h4{
-    font-size: 24px;
-    color: #012522;
-    text-align: center;
 }

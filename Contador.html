@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit card</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <h1>Ooganizar y Mostrar usuarios</h1>
+
+    <section class="container_Info">
+        <h1 class="TextInput">Organizar CVV</h1>
+    
+        <label for="NameUser" class="TextInput">Nombre usuario:</label>
+        <input type="text" id="NameUser" class="ContainerInput" placeholder="Digita la palabra NameUser"><br><br>
+    
+        <label for="comparator" class="TextInput">Forma análisis:</label>
+        <input type="text" id="comparator" class="ContainerInput" placeholder="==, >, <, etc"><br><br>
+    
+        <label for="value" class="TextInput">Número CVV:</label>
+        <input type="text" id="value" class="ContainerInput" placeholder="Ej: 234"><br><br>
+    
+        <button id="OrderCVV" class="buttonPrincipal">Ejecutar organizador</button>
+    </section>
+    
+
+
+
+        <h2>Results</h2>
+        <div id="container_data" class="container_data">
+    
+        </div>
+    
+    
+
+    <script type="module" src="./js/Contar.js"></script>
+</body>
+</html>

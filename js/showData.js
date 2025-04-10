@@ -1,4 +1,4 @@
-import { FirestoreService } from './modules/firestore_service.js';
+import { FirestoreService } from '../modules/firestore_service.js';
 
 const firestore = new FirestoreService("creditCard");
 
@@ -35,14 +35,14 @@ document.getElementById("reflectData").addEventListener("click", async () => {
     const docId = document.getElementById("getDocId").value.trim();
     
     try {
-        // Aquí asumo que `docId` ya está definido en otro lugar
+        // Here I assume that `docId` is already defined elsewhere
         const doc = await firestore.getDocumentById(docId);
 
-        // Asegurarse de que el contenedor esté visible
+        // Ensure the container is visible
         container.style.display = "block";
         
-        console.log(doc)
-        // Llenar el contenedor con la información del documento
+        console.log(doc);
+        // Fill the container with the document information
         container.innerHTML = `
             <h4> Expiry Date: ${doc.ExpiryDate} </h4>
             <h4> User card: ${doc.UserCard} </h4>
