@@ -10,7 +10,8 @@
 
     <h1>Organizar y Mostrar usuarios</h1>
 
-    <section class="container_Info">
+    <!-- Section for organizing CVV by comparator -->
+    <section class="container_Info" >
         <h1 class="TextInput">Organizar CVV por comparador</h1>
     
         <label for="NameUser" class="TextInput">Tipo de dato:</label>
@@ -25,11 +26,11 @@
         <button id="OrderCVV" class="buttonPrincipal">Ejecutar organizador</button>
     </section>
     
-    <section class="container_Info">
+    <!-- Section for sorting names in ascending or descending order -->
+    <section class="container_Info" >
         <h2 class="TextInput">Nombres ascendentes o descendentes</h2>
         <label for="orderColumn" class="TextInput">Se organizara por:</label>
         <input type="text" id="orderColumn" class="ContainerInput" placeholder=" Ej: nameUser"><br><br>
-
 
         <label for="orderDir" class="TextInput">direccion:</label>
         <select id="orderDir" class="ContainerInput">
@@ -43,11 +44,35 @@
         <button id="orderLimitQueryBtn" class="buttonPrincipal">Organizar ASC o DES</button>
     </section>
 
-        <h2>Results</h2>
-        <div id="container_data" class="container_data">
-    
+    <!-- Section for prefix search functionality -->
+    <section class="container_Info">
+        <h2 class="TextInput">Busca por inicio del nombre</h2>
+        <label for="prefixColumn" class="TextInput">Column:</label>
+        <input type="text" id="prefixColumn" class="ContainerInput" placeholder="nameUser"><br><br>
+
+        <label for="prefixValue" class="TextInput">Starts with:</label>
+        <input type="text" id="prefixValue" class="ContainerInput" placeholder="Os"><br><br>
+
+        <button id="prefixQueryBtn" class="buttonPrincipal">buscar</button>
+    </section>
+
+    <section class="container_Info">
+        <h2 class="TextInput">nameUser x numberCard</h2>
+        <div id="filtersContainer">
+            <div class="filter">
+                <input type="text" placeholder="Column" class="ContainerInput filterColumn">
+                <input type="text" placeholder="Comparator (==, >, <, etc)" class="ContainerInput filterComparator">
+                <input type="text" placeholder="Value" class="ContainerInput filterValue">
+            </div>
         </div>
-    
+        <button id="addFilterBtn" class="buttonPrincipal">Add Filter</button><br><br>
+        <button id="multiWhereQueryBtn" class="buttonPrincipal">Run Combined Query</button>
+    </section>
+
+    <!-- Section to display results -->
+    <h2 class="TextInput">Results</h2>
+    <div id="container_data" class="container_data">
+    </div>
     
 
     <script type="module" src="./js/Contar.js"></script>
